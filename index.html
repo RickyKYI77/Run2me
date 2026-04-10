@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Question 😎</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Playfair Display', 'Dancing Script', Georgia, serif;
+      margin-top: 100px;
+      background: linear-gradient(135deg, #ffe6f0, #ffccdd);
+      min-height: 100vh;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-family: 'Great Vibes', 'Dancing Script', cursive;
+      font-weight: normal;
+      margin-bottom: 40px;
+      color: #cc3366;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 22px;
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 10px;
+      transition: transform 0.2s;
+    }
+
+    #yesBtn {
+      background: #ff4d88;
+      color: white;
+      box-shadow: 0 5px 15px rgba(255, 77, 136, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #noBtn {
+      background: #888;
+      color: white;
+      position: absolute;
+    }
+
+    /* Flower animation */
+    .flower {
+      position: absolute;
+      font-size: 28px;
+      pointer-events: none;
+      animation: bloom 0.8s ease-out forwards;
+    }
+
+    @keyframes bloom {
+      0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.5) rotate(180deg);
+        opacity: 0;
+      }
+    }
+
+    #msg {
+      margin-top: 50px;
+      font-size: 28px;
+      font-family: 'Dancing Script', cursive;
+      font-weight: bold;
+      color: #ff3388;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Do you want to have fun with me? ❤️</h1>
+
+  <button id="yesBtn">Yes 💕</button>
+  <button id="noBtn">No 😈</button>
+
+  <p id="msg"></p>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const msg = document.getElementById("msg");
+
+    // YES BUTTON - Flowers blossom!
+    yesBtn.addEventListener("click", function(e) {
+      msg.innerHTML = "DM me 'Ready' 🌸💖";
+
+      for (let i = 0; i < 20; i++) {
+        createFlower(e.target);
+      }
+    });
+
+    function createFlower(button) {
+      const flower = document.createElement("div");
+      flower.className = "flower";
+
+      const flowers = ["🌸", "🌼", "🌻", "🌺", "💮", "🏵️", "🌸", "🌷", "🌹", "💐"];
+      flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+
+      const rect = button.getBoundingClientRect();
+      const x = rect.left + rect.width / 2 + (Math.random() - 0.5) * 150;
+      const y = rect.top + rect.height / 2 + (Math.random() - 0.5) * 150;
+
+      flower.style.left = x + "px";
+      flower.style.top = y + "px";
+
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 800);
+    }
+    noBtn.addEventListener("mouseover", function() {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+  </script>
+
+</body>
+</html>
